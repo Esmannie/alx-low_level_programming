@@ -1,35 +1,33 @@
 #include <stdlib.h>
-#include "main.h"
-
+#include <stdio.h>
 /**
- * array_range - A function that creates an array of integers
- * @min: min number
- * @max: max number
- * Return: Integer between min and max
- */
+  * _abs - get absolute value
+  * @n: number to calculate
+  * Return: absolute value of the number
+  */
+int _abs(int n)
+{
+	n < 0 ? (n *= -1) : (n = n);
+	return (n);
+}
+/**
+  * array_range - creates an array of integers
+  * @min: minimum value
+  * @max: maximum value
+  * Return: pointer to array of integers
+  */
 int *array_range(int min, int max)
 {
-	int *space;
+	int *p;
+	int range, i;
 
 	if (min > max)
-	{
 		return (NULL);
-	}
-
-	space = malloc(((max - min) + 1) * sizeof(int));
-	if (space == NULL)
-	{
+	range = max - min + 1;
+	p = malloc(range * sizeof(*p));
+	if (p == NULL)
 		return (NULL);
-	}
-	else
-	{
-		int i, j;
-
-		for (i = 0, j = min ; (i < ((max - min) + 1) && j <= max);
-				i++, j++)
-		{
-			space[i] = j;
-		}
-		return (space);
-	}
+	for (i = 0; i < range; min++, i++)
+		p[i] = min;
+	return (p);
 }
